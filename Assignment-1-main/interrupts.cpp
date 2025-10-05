@@ -32,7 +32,7 @@ int main(int argc, char** argv) {
 
         /******************ADD YOUR SIMULATION CODE HERE*************************/
         if(activity == "CPU"){
-            execution += std::to_string(current_time) + ", " + std::to_string(duration_intr) + ", CPU burst";
+            execution += std::to_string(current_time) + ", " + std::to_string(duration_intr) + ", CPU burst \n";
             current_time += duration_intr;
 
 
@@ -44,7 +44,7 @@ int main(int argc, char** argv) {
             current_time = add_time;
 
             //Execute ISR
-            execution += std::to_string(current_time) + ", " + std::to_string(activity_time) + ", " + activity + ": run the ISR (device driver)";
+            execution += std::to_string(current_time) + ", " + std::to_string(activity_time) + ", " + activity + ": run the ISR (device driver)\n";
             current_time += activity_time;
 
 
