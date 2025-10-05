@@ -20,9 +20,9 @@ int main(int argc, char** argv) {
     std::string execution;  //!< string to accumulate the execution output
 
     /******************ADD YOUR VARIABLES HERE*************************/
-    int time;          // Simulation time
-    int save_time;     // Context save/load time
-    int activity_time; // Activity execute time for each ISR line
+    int current_time = 0;          // Simulation time
+    int context_save_time = 10;     // Context save/load time
+    int activity_time = 40; // Activity execute time for each ISR line
     
     /******************************************************************/
 
@@ -32,13 +32,22 @@ int main(int argc, char** argv) {
 
         /******************ADD YOUR SIMULATION CODE HERE*************************/
         if(activity == "CPU"){
-
+            execution += std::to_string(current_time) + ", " + std::to_string(duration_intr) + ", CPU burst";
+            current_time += duration_intr;
 
 
         }else if(activity == "SYSCALL" || activity == "END_IO"){
+            //Find ISR
+            //Get ISR
+            auto [interupt, add_time] = intr_boilerplate(current_time, duration_intr, context_save_time, vectors);
+            execution += interupt;
+            current_time = add_time;
+
+            //Execute ISR
+            execution += std::to_string(current_time) + ", " + std::to_string(activity_time) + ", " + activity + ": run the ISR (device driver)";
+            current_time += activity_time;
 
 
-            
         }
             //Switch to kernal
             //Save/restore context
