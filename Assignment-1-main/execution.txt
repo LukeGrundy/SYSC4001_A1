@@ -5,7 +5,7 @@
 63, 1, load address 0X0165 into the PC
 64, 40, SYSCALL: run the ISR (device driver)
 104, 40, transfer data from device to memory
-144, 456, check
+144, 456, check for errors
 600, 1, IRET
 600, 39, CPU burst 
 639, 1, switch to kernel mode
@@ -14,7 +14,7 @@
 651, 1, load address 0X0165 into the PC
 652, 40, END_IO: run the ISR (device driver)
 692, 40, transfer data from device to memory
-732, 456, check
+732, 456, check device status
 1188, 1, IRET
 1188, 72, CPU burst 
 1260, 1, switch to kernel mode
@@ -23,7 +23,7 @@
 1272, 1, load address 0X0765 into the PC
 1273, 40, SYSCALL: run the ISR (device driver)
 1313, 40, transfer data from device to memory
-1353, 652, check
+1353, 652, check for errors
 2005, 1, IRET
 2005, 28, CPU burst 
 2033, 1, switch to kernel mode
@@ -32,5 +32,5 @@
 2045, 1, load address 0X0765 into the PC
 2046, 40, END_IO: run the ISR (device driver)
 2086, 40, transfer data from device to memory
-2126, 652, check
+2126, 652, check device status
 2778, 1, IRET

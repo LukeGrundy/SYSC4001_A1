@@ -46,20 +46,25 @@ int main(int argc, char** argv) {
             current_time = add_time;
 
             //Execute ISR
+            int io_time = delays.at(duration_intr);
+
             execution += std::to_string(current_time) + ", " + std::to_string(activity_time) + ", " + activity + ": run the ISR (device driver)\n";
             current_time += activity_time;
+            io_time -= activity_time; //subtract from total IO time to account for line
 
-            execution += std::to_string(current_time) + ", " + std::to_string(activity_time) + ", transfer data from device to memory\n";
-            current_time += activity_time;
-
-            int io_check = delays.at(duration_intr);
-            execution += std::to_string(current_time) + ", " + std::to_string(io_check) + ", check";
+            if(activity == "SYSCALL"){
+                execution += std::to_string(current_time) + ", " + std::to_string(activity_time) + ", transfer data from device to memory\n";
+                current_time += activity_time;
+                io_time -= activity_time; //subtract from total IO time to account for line
+            }
+            
+            execution += std::to_string(current_time) + ", " + std::to_string(io_time) + ", check";
             if(activity == "SYSCALL"){
                 execution += " for errors\n";
             }else if(activity == "END_IO"){
                 execution += " device status\n";
             }
-            current_time += io_check;
+            current_time += io_time;
 
             //Execute IRET
             execution += std::to_string(current_time) + ", 1, IRET\n";
