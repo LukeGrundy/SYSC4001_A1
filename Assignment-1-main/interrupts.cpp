@@ -49,6 +49,9 @@ int main(int argc, char** argv) {
             execution += std::to_string(current_time) + ", " + std::to_string(activity_time) + ", " + activity + ": run the ISR (device driver)\n";
             current_time += activity_time;
 
+            execution += std::to_string(current_time) + ", " + std::to_string(activity_time) + ", " + activity + ": transfer data to device memory\n";
+            current_time += activity_time;
+
             //Execute IRET
             execution += std::to_string(current_time) + ", 1, IRET\n";
 
