@@ -2,6 +2,7 @@
  *
  * @file interrupts.cpp
  * @author Sasisekhar Govind
+ * @author Luke Grundy - 101268449
  *
  */
 
@@ -19,9 +20,10 @@ int main(int argc, char** argv) {
     std::string execution;  //!< string to accumulate the execution output
 
     /******************ADD YOUR VARIABLES HERE*************************/
-
-
-
+    int time;          // Simulation time
+    int save_time;     // Context save/load time
+    int activity_time; // Activity execute time for each ISR line
+    
     /******************************************************************/
 
     //parse each line of the input trace file
@@ -29,9 +31,21 @@ int main(int argc, char** argv) {
         auto [activity, duration_intr] = parse_trace(trace);
 
         /******************ADD YOUR SIMULATION CODE HERE*************************/
+        if(activity == "CPU"){
 
 
 
+        }else if(activity == "SYSCALL" || activity == "END_IO"){
+
+
+            
+        }
+            //Switch to kernal
+            //Save/restore context
+            //Find ISR
+            //Get ISR
+            //Execute ISR
+            //Execute IRET
         /************************************************************************/
 
     }
