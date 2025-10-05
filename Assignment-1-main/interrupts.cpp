@@ -37,6 +37,8 @@ int main(int argc, char** argv) {
 
 
         }else if(activity == "SYSCALL" || activity == "END_IO"){
+            //Switch to kernal
+            //Save/restore context
             //Find ISR
             //Get ISR
             auto [interupt, add_time] = intr_boilerplate(current_time, duration_intr, context_save_time, vectors);
@@ -47,14 +49,13 @@ int main(int argc, char** argv) {
             execution += std::to_string(current_time) + ", " + std::to_string(activity_time) + ", " + activity + ": run the ISR (device driver)\n";
             current_time += activity_time;
 
+            //Execute IRET
+            execution += std::to_string(current_time) + ", 1, IRET\n";
 
         }
-            //Switch to kernal
-            //Save/restore context
-            //Find ISR
-            //Get ISR
-            //Execute ISR
-            //Execute IRET
+            
+            
+            
         /************************************************************************/
 
     }
