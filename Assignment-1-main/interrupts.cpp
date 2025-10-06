@@ -46,7 +46,7 @@ int main(int argc, char** argv) {
             current_time = add_time;
 
             //Execute ISR
-            int io_time = delays.at(duration_intr);
+            int io_time = delays.at(duration_intr); //Get time of IO device, will only be used if system call
 
             execution += std::to_string(current_time) + ", " + std::to_string(activity_time) + ", " + activity + ": run the ISR (device driver)\n";
             current_time += activity_time;
